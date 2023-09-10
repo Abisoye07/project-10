@@ -8,15 +8,15 @@ When data is moving between a client (browser) and a Web Server over the Interne
 This threat is real – users that share sensitive information (bank details, social media access credentials, etc.) via non-secured channels, risk their data to be compromised and used by cybercriminals.
 
 SSL and its newer version, TSL – is a security technology that protects connection from MITM attacks by creating an encrypted session between browser and Web server. Here we will refer this family of cryptographic protocols as SSL/TLS – even though SSL was replaced by TLS, the term is still being widely used.
-[alt text](./images/nameserver-page1.png)
+![nameserver-page1.ng](./images/nameserver-page1.png)
 
-[alt text](./images/create.certificate.png)
+![cretae.certificate.png](./images/create.certificate.png)
 
 SSL/TLS uses digital certificates to identify and validate a Website. A browser reads the certificate issued by a Certificate Authority (CA) to make sure that the website is registered in the CA so it can be trusted to establish a secured connection.
 
 There are different types of SSL/TLS certificates – you can learn more about them here. You can also watch a tutorial on how SSL works here or an additional resource here
 
-[certificate](./images/create.certificate.png%202.png)
+![create.certificate.png2](./images/create.certificate.png%202.png)
 
 In this project you will register your website with LetsEnrcypt Certificate Authority, to automate certificate issuance you will use a shell client recommended by LetsEncrypt – cetrbot.
 
@@ -27,7 +27,7 @@ This project consists of two parts:
 Register a new domain name and configure secured connection using SSL/TLS certificates
 Your target architecture will look like this:
 
- [alt text](./images/route53-page1.png)
+ ![route53-page1](./images/route53-page1.png)
 
 Instructions On How To Submit Your Work For Review And Feedback
 To submit your work for review and feedback – follow this instruction.
@@ -40,7 +40,7 @@ CONFIGURE NGINX AS A LOAD BALANCER
 You can either uninstall Apache from the existing Load Balancer server, or create a fresh installation of Linux for Nginx.
 
 
-[alt text](./images/nginx-running.png)
+![nginx-running.png](./images/nginx-running.png)
 
 ### Create an EC2 VM based on Ubuntu Server 20.04 LTS and name it Nginx LB (do not forget to open TCP port 80 for HTTP connections, also open TCP port 443 – this port is used for secured HTTPS connections)
 Update /etc/hosts file for local DNS with Web Servers’ names (e.g. Web1 and Web2) and their local IP addresses
@@ -52,7 +52,7 @@ sudo apt install nginx
 Configure Nginx LB using Web Servers’ names defined in /etc/hosts
 
 
-[alt text](./images/https.png)
+![https.png](./images/https.png)
 
 Hint: Read this blog to read about /etc/host
 
@@ -62,7 +62,7 @@ sudo vi /etc/nginx/nginx.conf
 
 #insert following configuration into http section
 
-[alt text](./images/etc,conf.png)
+![etc,conf.png](./images/etc,conf.png)
 
  upstream myproject {
     server Web1 weight=5;
@@ -76,7 +76,7 @@ server {
       proxy_pass http://myproject;
     }
   }
-[alt text](./images/login%20page.png)
+![login apage.png](./images/login%20page.png)
 
 
 #comment out this line
@@ -84,7 +84,7 @@ server {
 
 Restart Nginx and make sure the service is up and running
 
-[alt text](./images/server-run.png)
+![server-run.png](./images/server-run.png)
 
 sudo systemctl restart nginx
 sudo systemctl status nginx
